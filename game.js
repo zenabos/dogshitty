@@ -1,79 +1,42 @@
-const board = document.querySelector('#board')
-const startScreen = document.querySelector('.startscreen');
-const startBtn = document.querySelector('#startbtn');
-startBtn.addEventListener('click', () => {
-  startScreen.className = 'hide';
-  const game = new Game();
-  game.start(); 
-  console.log(startScreen)
-})
-
 class Game {
   constructor() {
-    this.carsArrOne = [];
-    this.carsArrTwo = [];
-    this.carsArrThree = [];
+    this.intervalId = null;
     this.timer = 0;
-    this.refreshRate = 1000 / 40;
+    this.carFrequency = 30;
+    this.carsArr = [];
+    this.refreshRate = 1000 / 100;
   }
+
   start() {
+
+    // Create dog
     this.dog = new Dog();
-    this.dog.domElement = this.createDomElm(this.dog);
-    this.drawDomElm(this.dog);
+    this.dog.domElement = this.createElm(this.dog);
+    this.drawElm(this.dog);
     this.addEventListeners();
 
-    const intervalId = setInterval(() => {
-      this.timer++;
-      if (this.timer % 80 === 0) {
-        const newCar = new Car(-10, 30, 2);
-        this.carsArrOne.push(newCar);
-        newCar.domElement = this.createDomElm(newCar);
-        this.drawDomElm(newCar);
-      } else if (this.timer % 50 === 0) {
-        const newCarTwo = new Car(110, 50, -1);
-        this.carsArrTwo.push(newCarTwo);
-        newCarTwo.domElement = this.createDomElm(newCarTwo);
-        this.drawDomElm(newCarTwo);
-      } else if (this.timer % 60 === 0) {
-        const newCarThree = new Car(-10, 70, 1);
-        this.carsArrThree.push(newCarThree);
-        newCarThree.domElement = this.createDomElm(newCarThree);
-        this.drawDomElm(newCarThree);
+    // Cars loop
+    this.intervalId = setInterval(() => {
+
+    // Create new cars
+    this.timer++;
+    if(this.timer % this.carFrequency === 0){
+      const newCar = new Car();
+      newCar.setSettings(newCar);
+      this.carsArr.push(newCar);
+      newCar.domElement = this.createElm(newCar);
+      this.drawElm(newCar);
       }
-      this.carsArrOne.forEach((car) => {
-        car.moveCar();
-        this.detectCollision(car);
-        this.drawDomElm(car);
-        this.removeCarOne(car);
-      });
 
-      this.carsArrTwo.forEach((car) => {
-        car.moveCar();
-        this.detectCollision(car);
-        this.drawDomElm(car);
-        this.removeCarTwo(car);
-      });
+    // Move / remove cars
+    this.carsArr.forEach((car) => {
+      car.moveCar();
+      this.drawElm(car);
+      this.detectCollision(car);
+      this.removeCar(car);
+    });
 
-      this.carsArrThree.forEach((car) => {
-        car.moveCar();
-        this.detectCollision(car);
-        this.drawDomElm(car);
-        this.removeCarThree(car);
-      });
     }, this.refreshRate);
-  }
-
-  detectCollision(car) {
-    if (
-      this.dog.positionX < car.positionX + car.width &&
-      this.dog.positionX + this.dog.width > car.positionX &&
-      this.dog.positionY < car.positionY + car.height &&
-      this.dog.height + this.dog.positionY > car.positionY
-    ) {
-      document.location.reload();
-      startScreen.className = 'startscreen';
-      startBtn.innerTEXT = 'Try again!'
-    }
   }
 
   addEventListeners() {
@@ -87,111 +50,61 @@ class Game {
       } else if (event.key === "ArrowDown") {
         this.dog.moveDown();
       }
-      this.drawDomElm(this.dog);
+      this.drawElm(this.dog);
       this.detectWin(this.dog);
     });
   }
-  createDomElm(instance) {
+  createElm(element) {
     const htmlTag = document.createElement("div");
-    htmlTag.className = instance.className;
-    htmlTag.style.width = instance.width + "vw";
-    htmlTag.style.height = instance.height + "vh";
+    htmlTag.className = element.className;
+    htmlTag.style.width = element.width + "vw";
+    htmlTag.style.height = element.height + "vh";
     const board = document.getElementById("board");
     board.appendChild(htmlTag);
     return htmlTag;
   }
-  drawDomElm(instance) {
-    instance.domElement.style.top = instance.positionY + "vh";
-    instance.domElement.style.left = instance.positionX + "vw";
+  drawElm(element) {
+    element.domElement.style.top = element.positionY + "vh";
+    element.domElement.style.left = element.positionX + "vw";
   }
 
-  removeCarOne(car) {
-    if (car.positionX === 100) {
+  removeCar(car) {
+    if(car.positionY % 20 === 0 && car.positionX === -10) {
       car.domElement.remove();
-      this.carsArrOne.shift(car);
+      this.carsArr.shift(car);
+    } else if(car.positionY % 20 !== 0 && car.positionX === 100) {
+      car.domElement.remove();
+      this.carsArr.shift(car);
     }
   }
 
-  removeCarTwo(car) {
-    if (car.positionX === -10) {
-      car.domElement.remove();
-      this.carsArrTwo.shift(car);
-    }
-  }
-  removeCarThree(car) {
-    if (car.positionX === 100) {
-      car.domElement.remove();
-      this.carsArrThree.shift(car);
+  detectCollision(car) {
+    if (
+      this.dog.positionX < car.positionX + car.width &&
+      this.dog.positionX + this.dog.width > car.positionX &&
+      this.dog.positionY < car.positionY + car.height &&
+      this.dog.height + this.dog.positionY > car.positionY
+    ) {
+      clearInterval(this.intervalId);
+      gameOver.classList.remove('hide');
     }
   }
 
   detectWin() {
     if (this.dog.positionY === 0){
       setTimeout(function(){
-        startScreen.className = 'startscreen';
-        document.board.reload();
-        startBtn.innerHTML = 'Play again'
+        clearInterval(this.intervalId);
+        youWin.classList.remove('hide');
       }, 300);
     }
   }
-}
 
-
-
-class Dog {
-  constructor() {
-    this.className = "dog";
-    this.positionX = 50;
-    this.positionY = 90;
-    this.width = 10;
-    this.height = 10;
-    this.domElement = null;
-  }
-
-  moveLeft() {
-    if (this.positionX === 0) {
-      this.stopMovement(dog);
-    }
-    this.positionX -= 10;
-  }
-
-  moveRight() {
-    if (this.positionX === 90) {
-      this.stopMovement(dog);
-    }
-    this.positionX += 10;
-  }
-
-  moveUp() {
-    if (this.positionY === 0) {
-      this.stopMovement(dog);
-    }
-    this.positionY -= 10;
-  }
-
-  moveDown() {
-    if (this.positionY === 90) {
-      this.stopMovement(dog);
-    }
-    this.positionY += 10;
-  }
-
-  stopMovement() {
-    return this.positionX && this.positionY;
+  restart(){
+    board.innerHTML = '';
+    this.start();
   }
 }
 
-class Car {
-  constructor(positionX, positionY, move) {
-    this.className = "car";
-    this.positionX = positionX;
-    this.positionY = positionY;
-    this.width = 10;
-    this.height = 10;
-    this.domElement = null;
-    this.move = move;
-  }
-  moveCar() {
-    this.positionX += this.move;
-  }
-}
+
+
+

@@ -9,14 +9,34 @@
 </head>
 <body>
 
-    <div id="board">
-        <div class="startscreen"> 
-            <h1>Dogshitty</h1>
-            <p>Help the dog to take a shit!</p>       
-            <button id="startbtn" class="button">Start</button>
-        </div>
-    <div> 
+    <!-- Start screen -->
+    <section id="start" class="popup"> 
+        <h1>Dogshitty</h1>
+        <p>Help the dog to take a shit!</p>       
+        <button id="startbtn" class="button">Start</button>
+    </section>
 
+    <!--Game board-->
+    <div id="board"><div> 
+
+    <!--Game over-->
+    <section id="game-over" class="hide popup"> 
+        <h1>Game over</h1>
+        <p>That was shitty!</p>       
+        <button id="tryagainbtn" class="button">Try again!</button>
+    </section>
+
+    <!--You win-->
+    <section id="win" class="hide popup"> 
+        <h1>You win!</h1>
+        <p>That was a nice shit!</p>       
+        <button id="playagainbtn" class="button">Play again!</button>
+    </section>
+
+    <!--JS files-->
+    <script src="./dog.js"></script>
+    <script src="./cars.js"></script>
+    <script src="./settings.js"></script>
     <script src="./game.js"></script>
 </body>
 </html>
