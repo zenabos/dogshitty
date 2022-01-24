@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.startscreen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: burlywood;
+  width: 80vw;
+  height: 80vh;
+  margin: auto;
+}
+
+.hide {
+  display: none;
+}
+
+#board {
+  width: 100vw;
+  height: 100vh;
+  box-shadow: 5px 5px 10px black;
+  background-color: cornflowerblue;
+  position: relative;
+}
+
+.dog {
+  background-color: blue;
+  position: absolute;
+}
+
+.car {
+  background-color: red;
+  position: absolute;
+}
