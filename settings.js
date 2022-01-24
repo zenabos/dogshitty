@@ -1,25 +1,24 @@
-const board = document.querySelector('#board')
-const startScreen = document.querySelector('#start');
-const youWin = document.querySelector('#win');
-const gameOver = document.querySelector('#game-over');
-const startBtn = document.querySelector('#startbtn');
-const playAgainBtn = document.querySelector('#playagainbtn');
-const tryAgainBtn = document.querySelector('#tryagainbtn');
+const board = document.querySelector("#board");
+const youWin = document.querySelector("#win");
+const gameOver = document.querySelector("#gameover");
+const playAgainBtn = document.querySelector("#playagainbtn");
+const tryAgainBtn = document.querySelector("#tryagainbtn");
 
-startBtn.addEventListener('click', () => {
-  startScreen.classList.add('hide');
+window.addEventListener("load", () => {
   const game = new Game();
-  game.start(); 
-})
+  game.start();
+});
 
-playAgainBtn.addEventListener('click',() => {
-  youWin.classList.add('hide');
-  const game = new Game();
-  game.restart();
-})
+playAgainBtn.addEventListener("click", () => {
+  restart();
+});
 
-tryAgainBtn.addEventListener('click', () => {
-  gameOver.classList.add('hide');
+tryAgainBtn.addEventListener("click", () => {
+  restart();
+});
+
+function restart() {
+  window.location.reload();
   const game = new Game();
-  game.restart(); 
-})
+  game.start();
+}

@@ -5,6 +5,7 @@ class Game {
     this.carFrequency = 30;
     this.carsArr = [];
     this.refreshRate = 1000 / 100;
+    this.dog = null;
   }
 
   start() {
@@ -98,11 +99,7 @@ class Game {
       }, 300);
     }
   }
-
-  restart(){
-    board.innerHTML = '';
-    this.start();
-  }
+ 
 }
 
 

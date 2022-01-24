@@ -15,7 +15,8 @@ body {
   align-items: center;
   flex-direction: column;
   background-color: burlywood;
-  position: relative;
+  position: absolute;
+  top: 20px;
 }
 
 .hide {
@@ -26,7 +27,6 @@ body {
   z-index: 1;
   width: 100vw;
   height: 100vh;
-  box-shadow: 5px 5px 10px black;
   background-color: cornflowerblue;
   position: relative;
 }
