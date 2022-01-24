@@ -1,8 +1,12 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap");
+html > body {
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
+  font-family: "Dongle", sans-serif;
+  font-weight: 300;
+  font-size: 20px;
 }
 
 .popup {
@@ -10,17 +14,35 @@ body {
   height: 80vh;
   margin: auto;
   z-index: 2;
+  position: absolute;
+  top: 10vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   background-color: burlywood;
-  position: absolute;
-  top: 20px;
+  border-radius: 10%;
+  box-shadow: 0px 0px 2px 2px;
+}
+
+h1 {
+  font-size: 60px;
 }
 
 .hide {
   display: none;
+  margin: 0;
+}
+
+.button {
+  width: 20vw;
+  height: 6vh;
+  font-family: "Dongle", sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  padding: 0;
+  border-radius: 10px;
+  box-shadow: 0px 1px 1px 0px;
 }
 
 #board {
@@ -32,7 +54,9 @@ body {
 }
 
 .dog {
-  background-color: blue;
+  background-image: url("./Dog.png");
+  background-size: contain;
+  background-repeat: no-repeat;
   position: absolute;
 }
 

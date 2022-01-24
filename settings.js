@@ -1,3 +1,5 @@
+// Settings for starting game
+
 const board = document.querySelector("#board");
 const youWin = document.querySelector("#win");
 const gameOver = document.querySelector("#gameover");
