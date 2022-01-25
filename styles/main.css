@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap");
 html > body {
+  background-color: #99cccd;
   margin: 0;
   padding: 0;
   display: flex;
@@ -11,11 +12,11 @@ html > body {
 
 .popup {
   width: 80vw;
-  height: 80vh;
+  height: 60vh;
   margin: auto;
   z-index: 2;
   position: absolute;
-  top: 10vh;
+  top: 20vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,6 +24,7 @@ html > body {
   background-color: burlywood;
   border-radius: 10%;
   box-shadow: 0px 0px 2px 2px;
+  text-align: center;
 }
 
 h1 {
@@ -50,13 +52,14 @@ h1 {
   z-index: 1;
   width: 100vw;
   height: 100vh;
-  background-color: cornflowerblue;
+  background-color: #99cccd;
   position: relative;
 }
 
-#timer {
-  width: 30px;
-  height: 30px;
+.info {
+  z-index: 3;
+  width: 50px;
+  height: 50px;
   border: solid 1px black;
   border-radius: 50%;
   background-color: burlywood;
@@ -66,20 +69,28 @@ h1 {
   position: relative;
   top: 10px;
   left: 10px;
+  font-size: 1.5em;
 }
 
-#scoreboard {
+#score {
   font-size: 1.5em;
 }
 
 .dog {
-  background-image: url("./Dog.png");
+  background-image: url("./images/Dog.png");
   background-size: contain;
   background-repeat: no-repeat;
   position: absolute;
 }
 
+.left {
+  transform: scaleX(-1);
+}
+
 .car {
-  background-color: red;
+  background-image: url("./images/car-1.png");
+  background-size: contain;
+  background-repeat: no-repeat;
   position: absolute;
+  overflow: hidden;
 }

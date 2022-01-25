@@ -5,14 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dogshitty</title>
-    <link rel="stylesheet" href="./main.css">
+    <link rel="stylesheet" href="./styles/main.css">
 </head>
 <body>
+    <!--Start screen-->
+    <section id="start" class="popup"> 
+        <h1>Dogshitty</h1>
+        <p>Tyler really needs to take a shit.<br> But he is not allowed to shit on his side of the road.
+            <br>Are you gonna help Tyler to cross the road and take a shit?</p>       
+        <button id="startbtn" class="button">Start</button>
+    </section>
+
+    <!--Timer & Scoreboard-->
+    <div id="timer" class="info">0</div>
+    <div id="scoreboard" class="info">0</div>
 
     <!--Game board-->
-    <div id="board">
-        <div id="timer"></div>
-    </div> 
+    <div id="board"></div> 
 
     <!--Game over-->
     <section id="gameover" class="popup hide"> 
@@ -24,18 +33,18 @@
     <!--You win-->
     <section id="win" class="popup hide"> 
         <h1>You win!</h1>
-        <div id="scoreboard">
+        <div id="score">
             <p>Score = <span id="points"></span></p>
         </div>
         <p>That was a nice shit!</p>       
-        <button id="playagainbtn" class="button">Play again!</button>
+        <button id="nextlevelbtn" class="button">Next level</button>
     </section>
 
     <!--JS files-->
-    <script src="./dog.js"></script>
-    <script src="./cars.js"></script>
-    <script src="./settings.js"></script>
-    <script src="./game.js"></script>
-
+    <script src="./js/dog.js"></script>
+    <script src="./js/cars.js"></script>
+    <script src="./js/game.js"></script>
+    <script src="./js/settings.js"></script>
+    
 </body>
 </html>
