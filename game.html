@@ -10,7 +10,9 @@
 <body>
 
     <!--Game board-->
-    <div id="board"></div> 
+    <div id="board">
+        <div id="timer"></div>
+    </div> 
 
     <!--Game over-->
     <section id="gameover" class="popup hide"> 
@@ -22,6 +24,9 @@
     <!--You win-->
     <section id="win" class="popup hide"> 
         <h1>You win!</h1>
+        <div id="scoreboard">
+            <p>Score = <span id="points"></span></p>
+        </div>
         <p>That was a nice shit!</p>       
         <button id="playagainbtn" class="button">Play again!</button>
     </section>

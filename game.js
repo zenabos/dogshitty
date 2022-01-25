@@ -1,7 +1,7 @@
 class Game {
   constructor() {
     this.intervalId = null;
-    this.timer = 0;
+    this.timer = 1100;
     this.carFrequency = 30;
     this.carsArr = [];
     this.refreshRate = 1000 / 100;
@@ -18,7 +18,7 @@ class Game {
     // Cars loop
     this.intervalId = setInterval(() => {
       // Create new cars
-      this.timer++;
+      this.timer--;
       if (this.timer % this.carFrequency === 0) {
         const newCar = new Car();
         newCar.setSettings(newCar);
@@ -34,6 +34,11 @@ class Game {
         this.detectCollision(car);
         this.removeCar(car);
       });
+
+      // Set timer
+      this.printTimer();
+      this.detectLose();
+
     }, this.refreshRate);
   }
   // Move dog
@@ -53,7 +58,7 @@ class Game {
     });
   }
 
-  // Creat element(s)
+  // Create element(s)
   createElm(element) {
     const htmlTag = document.createElement("div");
     htmlTag.className = element.className;
@@ -92,12 +97,24 @@ class Game {
     }
   }
 
+  detectLose(){
+    if(this.timer === 99){
+      clearInterval(this.intervalId);
+      gameOver.classList.remove("hide");
+    }
+  }
+
   detectWin() {
     if (this.dog.positionY === 0) {
-      setTimeout(function () {
         clearInterval(this.intervalId);
         youWin.classList.remove("hide");
-      }, 300);
+        const points = document.querySelector("#points");
+        points.innerHTML = Math.floor(this.timer);
     }
+  }
+
+  printTimer(){
+    let timer = document.querySelector('#timer');
+    timer.innerHTML = Math.floor(this.timer / 100);
   }
 }

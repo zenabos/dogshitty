@@ -27,6 +27,7 @@ html > body {
 
 h1 {
   font-size: 60px;
+  margin: 0;
 }
 
 .hide {
@@ -51,6 +52,24 @@ h1 {
   height: 100vh;
   background-color: cornflowerblue;
   position: relative;
+}
+
+#timer {
+  width: 30px;
+  height: 30px;
+  border: solid 1px black;
+  border-radius: 50%;
+  background-color: burlywood;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 10px;
+  left: 10px;
+}
+
+#scoreboard {
+  font-size: 1.5em;
 }
 
 .dog {

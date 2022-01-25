@@ -6,6 +6,9 @@ const gameOver = document.querySelector("#gameover");
 const playAgainBtn = document.querySelector("#playagainbtn");
 const tryAgainBtn = document.querySelector("#tryagainbtn");
 
+
+
+
 window.addEventListener("load", () => {
   const game = new Game();
   game.start();
@@ -24,3 +27,4 @@ function restart() {
   const game = new Game();
   game.start();
 }
+
