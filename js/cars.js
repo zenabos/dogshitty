@@ -4,7 +4,7 @@ class Car {
     this.positionY = Math.floor(Math.random() * 7 + 2) * 10;
     this.positionX = null;
     this.move = null;
-    this.width = 20;
+    this.width = 15;
     this.height = 10;
     this.speed = 1;
   }
