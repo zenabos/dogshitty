@@ -16,7 +16,7 @@ class Car {
     } else {
       this.positionX = -10;
       this.move = 1 * this.speed;
-      
+      this.className = "car forward";
     }
   }
 

@@ -99,9 +99,9 @@ class Game {
 
   // Remove elements (cars)
   removeCar(car) {
-    if (car.positionY % 20 === 0 && car.positionX === -10) {
+    if (car.positionY % 20 === 0 && car.positionX <= -5) {
       car.domElement.remove();
-    } else if (car.positionY % 20 !== 0 && car.positionX === 100) {
+    } else if (car.positionY % 20 !== 0 && car.positionX >= 95) {
       car.domElement.remove();
     }
   }
