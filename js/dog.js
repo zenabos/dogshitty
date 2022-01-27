@@ -9,30 +9,29 @@ class Dog {
 
   moveLeft() {
     if (this.positionX === 0) {
-      return this.positionX
+      return this.positionX;
     }
     this.positionX -= 10;
   }
 
   moveRight() {
     if (this.positionX === 90) {
-      return this.positionX
+      return this.positionX;
     }
     this.positionX += 10;
   }
 
   moveUp() {
     if (this.positionY === 10) {
-      return this.positionY;    
+      return this.positionY;
     }
     this.positionY -= 10;
   }
 
   moveDown() {
     if (this.positionY === 90) {
-      return this.positionY;    
+      return this.positionY;
     }
     this.positionY += 10;
   }
 }
-

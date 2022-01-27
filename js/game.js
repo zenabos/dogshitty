@@ -21,6 +21,7 @@ class Game {
 
   start() {
     //(re)set settings
+    info.forEach((box) => box.classList.remove("hide"));
     this.setSettings();
     this.controller = new AbortController();
 
@@ -38,7 +39,7 @@ class Game {
       this.runOutOfTime();
 
       // Create new cars
-      if (this.timer % (this.carFrequency / this.level) === 0) {
+      if (this.timer % Math.floor(this.carFrequency / this.level) === 0) {
         const newCar = new Car(this.speed * (this.level * 0.75));
         newCar.setSettings(newCar);
         this.carsArr.push(newCar);
@@ -64,16 +65,16 @@ class Game {
       (event) => {
         if (event.key === "ArrowLeft") {
           this.dog.moveLeft();
-          this.dog.className = "left dog";
+          this.dog.domElement.className = "left dog";
         } else if (event.key === "ArrowRight") {
           this.dog.moveRight();
-          this.dog.className = "right dog";
+          this.dog.domElement.className = "right dog";
         } else if (event.key === "ArrowUp") {
           this.dog.moveUp();
-          this.dog.className = "dog";
+          this.dog.domElement.className = "dog";
         } else if (event.key === "ArrowDown") {
           this.dog.moveDown();
-          this.dog.className = "dog down";
+          this.dog.domElement.className = "dog down";
         }
         this.drawElm(this.dog);
         this.detectWin(this.dog);
@@ -154,6 +155,7 @@ class Game {
     clearInterval(this.intervalId);
     board.innerHTML = "";
     this.controller.abort();
+    info.forEach((box) => box.classList.add("hide"));
   }
 }
 
@@ -177,7 +179,6 @@ startBtn.addEventListener("click", () => {
   startScreen.classList.add("hide");
   game = new Game();
   game.start();
-  info.forEach((box) => box.classList.remove("hide"));
 });
 
 nextLevelBtn.addEventListener("click", () => {

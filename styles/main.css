@@ -22,7 +22,7 @@ html > body {
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  background-color: #7bcbfe;
+  background-color: rgb(123, 203, 254, 0.95);
   border-radius: 10%;
   box-shadow: 0px 0px 2px 2px;
   text-align: center;
@@ -48,8 +48,8 @@ h1 {
 }
 
 .button {
-  width: 20vw;
-  height: 6vh;
+  width: 150px;
+  height: 50px;
   font-family: "Dongle", sans-serif;
   font-size: 1.2em;
   border-radius: 15px;
@@ -68,7 +68,6 @@ h1 {
   transform: scale(0.7);
 }
 
-
 #infoboard {
   z-index: 2;
   position: absolute;
@@ -81,17 +80,29 @@ h1 {
 }
 
 .info {
-  width: 20vh;
-  border: solid 1px black;
+  box-sizing: border-box;
+  width: 130px;
+  border: solid 2px black;
   border-radius: 15px;
-  background-color: #7bcbfe;
+  background-color: rgb(123, 203, 254, 0.6);
   display: flex;
-  justify-content: center;
   align-items: center;
   position: relative;
   top: 10px;
   left: 10px;
-  font-size: 1.5em;
+  font-size: 1em;
+  text-align: left;
+  margin-top: 15px;
+}
+
+.icon {
+  width: 20%;
+  margin-left: 10px;
+}
+
+.info p {
+  margin: 0 10px;
+  line-height: 1.7em;
 }
 
 .hide {
@@ -108,8 +119,6 @@ h1 {
   background-repeat: no-repeat;
   position: relative;
 }
-
-
 
 .dog {
   background-image: url("./images/dog-up.png");
@@ -135,10 +144,6 @@ h1 {
   background-repeat: no-repeat;
   position: absolute;
   overflow: hidden;
-}
-
-.one {
-  background-image: url("./images/dog-up.png");
 }
 
 .forward {
