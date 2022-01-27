@@ -43,6 +43,7 @@ class Game {
         newCar.setSettings(newCar);
         this.carsArr.push(newCar);
         newCar.domElement = this.createElm(newCar);
+        newCar.domElement.style.backgroundImage = newCar.getRandomImage(newCar);
         this.drawElm(newCar);
       }
 
@@ -63,16 +64,16 @@ class Game {
       (event) => {
         if (event.key === "ArrowLeft") {
           this.dog.moveLeft();
-          this.dog.domElement.className = "left dog";
+          this.dog.className = "left dog";
         } else if (event.key === "ArrowRight") {
           this.dog.moveRight();
-          this.dog.domElement.className = "right dog";
+          this.dog.className = "right dog";
         } else if (event.key === "ArrowUp") {
           this.dog.moveUp();
-          this.dog.domElement.className = "dog";
+          this.dog.className = "dog";
         } else if (event.key === "ArrowDown") {
           this.dog.moveDown();
-          this.dog.domElement.className = "dog down";
+          this.dog.className = "dog down";
         }
         this.drawElm(this.dog);
         this.detectWin(this.dog);
@@ -99,7 +100,7 @@ class Game {
 
   // Remove elements (cars)
   removeCar(car) {
-    if (car.positionY % 20 === 0 && car.positionX <= -5) {
+    if (car.positionY % 20 === 0 && car.positionX <= -10) {
       car.domElement.remove();
     } else if (car.positionY % 20 !== 0 && car.positionX >= 95) {
       car.domElement.remove();

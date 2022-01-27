@@ -8,6 +8,24 @@ class Car {
     this.height = 10;
     this.speed = speed;
   }
+  
+  getRandomImage() {
+    let imageArray = [
+      {image: "../styles/images/car-1.png"},
+      {image: "../styles/images/car-2.png"},
+      {image: "../styles/images/car-3.png"},
+      {image: "../styles/images/car-4.png"},
+      {image: "../styles/images/truck.png"},
+      {image: "../styles/images/bus.png"},
+    ]
+  
+    let randomIndex = Math.floor(Math.random() * imageArray.length)
+    let randomImage = imageArray[randomIndex];
+    
+    let img = randomImage.image;
+    let url = `url('${img}')`
+    return url;
+    }
 
   setSettings() {
     if (this.positionY % 20 === 0) {
@@ -16,9 +34,11 @@ class Car {
     } else {
       this.positionX = -10;
       this.move = 1 * this.speed;
-      this.className = "car forward";
+      this.className = ("car forward");
     }
   }
+
+  
 
   moveCar() {
     this.positionX += this.move;
