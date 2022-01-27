@@ -72,7 +72,7 @@ class Game {
           this.dog.domElement.className = "dog";
         } else if (event.key === "ArrowDown") {
           this.dog.moveDown();
-          this.dog.domElement.className = "dog";
+          this.dog.domElement.className = "dog down";
         }
         this.drawElm(this.dog);
         this.detectWin(this.dog);

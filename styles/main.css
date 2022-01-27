@@ -6,25 +6,68 @@ html > body {
   justify-content: center;
   font-family: "Dongle", sans-serif;
   font-weight: 300;
-  font-size: 20px;
+  font-size: 24px;
 }
 
 .popup {
-  width: 80vw;
+  width: 60vw;
   height: 60vh;
   margin: auto;
+  padding: 10% 5%;
   z-index: 3;
   position: absolute;
   top: 20vh;
+  bottom: 20vh;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  background-color: burlywood;
+  background-color: #7bcbfe;
   border-radius: 10%;
   box-shadow: 0px 0px 2px 2px;
   text-align: center;
 }
+
+h1 {
+  font-size: 3em;
+  margin: 0;
+  line-height: 1em;
+}
+
+.dogimage {
+  height: 40%;
+}
+
+.popup p {
+  margin: 0;
+  line-height: 1.2em;
+}
+
+#score {
+  font-size: 1.5em;
+}
+
+.button {
+  width: 20vw;
+  height: 6vh;
+  font-family: "Dongle", sans-serif;
+  font-size: 1.2em;
+  border-radius: 15px;
+  box-shadow: 1px 3px 1px black;
+  background-color: #7bcbfe;
+  transition-duration: 0.4s;
+}
+
+.button:hover {
+  background-color: #d6ecfa;
+}
+
+.button:active {
+  transition-duration: 2s;
+  box-shadow: 1px 1px 1px black;
+  transform: scale(0.7);
+}
+
 
 #infoboard {
   z-index: 2;
@@ -41,7 +84,7 @@ html > body {
   width: 20vh;
   border: solid 1px black;
   border-radius: 15px;
-  background-color: burlywood;
+  background-color: #7bcbfe;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -51,25 +94,9 @@ html > body {
   font-size: 1.5em;
 }
 
-h1 {
-  font-size: 60px;
-  margin: 0;
-}
-
 .hide {
   display: none;
   margin: 0;
-}
-
-.button {
-  width: 20vw;
-  height: 6vh;
-  font-family: "Dongle", sans-serif;
-  font-weight: 600;
-  font-size: 24px;
-  padding: 0;
-  border-radius: 10px;
-  box-shadow: 0px 1px 1px 0px;
 }
 
 #board {
@@ -82,23 +109,25 @@ h1 {
   position: relative;
 }
 
-#score {
-  font-size: 1.5em;
-}
+
 
 .dog {
-  background-image: url("./images/Dog.png");
+  background-image: url("./images/dog-up.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
   position: absolute;
 }
 
+.down {
+  background-image: url("./images/dog-down.png");
+}
+
 .left {
-  background-image: url("./images/dogL.png");
+  background-image: url("./images/dog-left.png");
 }
 
 .right {
-  background-image: url("./images/DogR.png");
+  background-image: url("./images/dog-right.png");
 }
 
 .car {

@@ -35,3 +35,4 @@ class Dog {
     this.positionY += 10;
   }
 }
+
