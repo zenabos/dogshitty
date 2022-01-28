@@ -5,6 +5,8 @@ class Dog {
     this.positionY = 90;
     this.width = 10;
     this.height = 10;
+    this.moveAudio = new Audio("sounds/move.wav");
+    this.moveAudio.volume = 0.6;
   }
 
   moveLeft() {
@@ -12,6 +14,7 @@ class Dog {
       return this.positionX;
     }
     this.positionX -= 10;
+    this.moveAudio.play();
   }
 
   moveRight() {
@@ -19,6 +22,7 @@ class Dog {
       return this.positionX;
     }
     this.positionX += 10;
+    this.moveAudio.play();
   }
 
   moveUp() {
@@ -26,6 +30,7 @@ class Dog {
       return this.positionY;
     }
     this.positionY -= 10;
+    this.moveAudio.play();
   }
 
   moveDown() {
@@ -33,5 +38,6 @@ class Dog {
       return this.positionY;
     }
     this.positionY += 10;
+    this.moveAudio.play();
   }
 }

@@ -10,9 +10,12 @@ class Game {
     this.score = 0;
     this.speed = 1;
     this.carFrequency = 60;
+    this.winAudio = new Audio("sounds/dog-barking.wav");
+    this.loseAudio = new Audio("sounds/dog-crying.wav");
+    this.loseAudio.volume = 1;
   }
 
-  setSettings() {
+  setNewLevel() {
     this.timer = 1100;
     this.carsArr = [];
     scoreboard.innerHTML = this.score;
@@ -20,9 +23,10 @@ class Game {
   }
 
   start() {
+    this.playAudio();
     //(re)set settings
     info.forEach((box) => box.classList.remove("hide"));
-    this.setSettings();
+    this.setNewLevel();
     this.controller = new AbortController();
 
     // Create dog
@@ -83,6 +87,13 @@ class Game {
     );
   }
 
+  playAudio() {
+    this.gameAudio = new Audio("sounds/background-music.mp3");
+    this.gameAudio.volume = 0.1;
+    this.gameAudio.playbackRate = 0.5 + 0.5 * this.level;
+    this.gameAudio.play();
+  }
+
   // Create element(s)
   createElm(element) {
     const htmlTag = document.createElement("div");
@@ -118,6 +129,7 @@ class Game {
     ) {
       this.stopGame();
       gameOver.classList.remove("hide");
+      this.loseAudio.play();
     }
   }
 
@@ -125,11 +137,13 @@ class Game {
     if (this.timer === 99) {
       this.stopGame();
       gameOver.classList.remove("hide");
+      this.loseAudio.play();
     }
   }
 
   detectWin() {
     if (this.dog.positionY === 10) {
+      this.winAudio.play();
       setTimeout(() => {
         this.stopGame();
 
@@ -156,6 +170,7 @@ class Game {
     board.innerHTML = "";
     this.controller.abort();
     info.forEach((box) => box.classList.add("hide"));
+    this.gameAudio.pause();
   }
 }
 
@@ -191,3 +206,5 @@ tryAgainBtn.addEventListener("click", () => {
   game = new Game();
   game.start();
 });
+
+let;
