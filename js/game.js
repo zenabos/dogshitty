@@ -206,5 +206,3 @@ tryAgainBtn.addEventListener("click", () => {
   game = new Game();
   game.start();
 });
-
-let;
