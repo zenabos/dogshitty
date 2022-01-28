@@ -8,7 +8,7 @@ class Game {
     this.refreshRate = 1000 / 100;
     this.level = 1;
     this.score = 0;
-    this.speed = 1;
+    this.speed = 0.5;
     this.carFrequency = 60;
     this.winAudio = new Audio("sounds/dog-barking.wav");
     this.loseAudio = new Audio("sounds/dog-crying.wav");
@@ -44,7 +44,7 @@ class Game {
 
       // Create new cars
       if (this.timer % Math.floor(this.carFrequency / this.level) === 0) {
-        const newCar = new Car(this.speed * (this.level * 0.75));
+        const newCar = new Car(this.speed + this.level * 0.1);
         newCar.setSettings(newCar);
         this.carsArr.push(newCar);
         newCar.domElement = this.createElm(newCar);
@@ -90,7 +90,7 @@ class Game {
   playAudio() {
     this.gameAudio = new Audio("sounds/background-music.mp3");
     this.gameAudio.volume = 0.1;
-    this.gameAudio.playbackRate = 0.5 + 0.5 * this.level;
+    this.gameAudio.playbackRate = 1 + 0.1 * this.level;
     this.gameAudio.play();
   }
 
